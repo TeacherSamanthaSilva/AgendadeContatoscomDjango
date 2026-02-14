@@ -14,7 +14,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 from django.urls import path
-from . import views
+from ..contatos import views
 
 urlpatterns = [
     path('', views.listar_contatos, name='lista_contatos'),
