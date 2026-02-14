@@ -123,13 +123,4 @@ MEDIA_ROOT = BASE_DIR / 'media'
 LOGIN_REDIRECT_URL = "lista_contatos"
 LOGOUT_REDIRECT_URL = "login"
 
-INSTALLED_APPS = [
-    ...
-    'contatos',
-]
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-LOGIN_REDIRECT_URL = "lista_contatos"
-LOGOUT_REDIRECT_URL = "login"
