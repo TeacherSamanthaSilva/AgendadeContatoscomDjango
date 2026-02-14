@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block title %}Meus Contatos{% endblock %}
+
+{% block content %}
+
+<h2 class="mb-3">Meus Contatos</h2>
+
+<form method="GET" class="mb-3">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Buscar por nome...">
+        <button class="btn btn-primary">Buscar</button>
+    </div>
+</form>
+
+<a href="{% url 'criar_contato' %}" class="btn btn-success mb-3">
+    Novo Contato
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Foto</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for contato in contatos %}
+        <tr>
+            <td>
+                {% if contato.foto %}
+                    <img src="{{ contato.foto.url }}" width="50" class="rounded">
+                {% else %}
+                    —
+                {% endif %}
+            </td>
+            <td>{{ contato.nome }} {{ contato.sobrenome }}</td>
+            <td>{{ contato.telefone }}</td>
+            <td>{{ contato.email }}</td>
+            <td>
+                <a href="{% url 'detalhe_contato' contato.id %}" class="btn btn-sm btn-info">Ver</a>
+                <a href="{% url 'editar_contato' contato.id %}" class="btn btn-sm btn-warning">Editar</a>
+                <a href="{% url 'excluir_contato' contato.id %}" class="btn btn-sm btn-danger">Excluir</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">Nenhum contato encontrado.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
