@@ -1,6 +1,7 @@
-from django.urls import path
-
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-    path('', views.listar_contatos, name='lista_contatos'),
+    path('admin/', admin.site.urls),
+    path('', include('contatos.urls')),
 ]
