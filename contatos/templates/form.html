@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Contato{% endblock %}
+
+{% block content %}
+
+<h2>{{ form.instance.pk|yesno:"Editar Contato,Novo Contato" }}</h2>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.nome.label_tag }}
+        {{ form.nome }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.sobrenome.label_tag }}
+        {{ form.sobrenome }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.telefone.label_tag }}
+        {{ form.telefone }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.foto.label_tag }}
+        {{ form.foto }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Salvar
+    </button>
+
+    <a href="{% url 'lista_contatos' %}" class="btn btn-secondary">
+        Cancelar
+    </a>
+</form>
+
+{% endblock %}
