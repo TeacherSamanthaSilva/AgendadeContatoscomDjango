@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes{% endblock %}
+
+{% block content %}
+
+<h2>{{ contato.nome }} {{ contato.sobrenome }}</h2>
+
+{% if contato.foto %}
+    <img src="{{ contato.foto.url }}" width="150" class="rounded mb-3">
+{% endif %}
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <strong>Telefone:</strong> {{ contato.telefone }}
+    </li>
+    <li class="list-group-item">
+        <strong>Email:</strong> {{ contato.email }}
+    </li>
+    <li class="list-group-item">
+        <strong>Criado em:</strong> {{ contato.data_criacao }}
+    </li>
+</ul>
+
+<a href="{% url 'lista_contatos' %}" class="btn btn-secondary mt-3">
+    Voltar
+</a>
+
+{% endblock %}
